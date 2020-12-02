@@ -1,0 +1,20 @@
+.chart{
+  width: 100%;
+  min-height: 600px;
+}
+
+#chart .c3-line-y {
+    stroke-width: 3px;
+  }
+
+#chart .c3-line-envlow {
+    stroke-width: 1px;
+    stroke-dasharray: 6px;
+ }
+
+
+#chart .c3-line-envup {
+    stroke-width: 1px;
+    stroke-dasharray: 6px;
+ }
+
