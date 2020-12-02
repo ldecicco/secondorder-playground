@@ -780,7 +780,7 @@ function update_chart(K, D, WN, U) {
     var peak_time;
     var max_overshoot;
     
-    sol = s.solve(secord(K, D, WN, U), 0, [0,0], tf, s.grid(0.1, solution(to,yo, envlow, envup, K, D, WN, U)));
+    sol = s.solve(secord(K, D, WN, U), 0, [0,0], tf, s.grid(0.01, solution(to,yo, envlow, envup, K, D, WN, U)));
     settling_time = -Math.log(SETTLING_B/100*Math.sqrt(1-D*D))/WN/D;
     final_value = U*K;
     max_overshoot = Math.exp(-Math.PI*D/Math.sqrt(1-D*D));
@@ -823,7 +823,7 @@ var chart = c3.generate({
                 {value: 2*Math.PI/WD, text: '2pi/wd'},
                 {value: 3*Math.PI/WD, text: '3pi/wd'},
                 {value: 4*Math.PI/WD, text: '4pi/wd'},
-                {value: settling_time, text: 'Settling time'}
+                {value: settling_time, text: 'Settling time (5%)'}
             ]
         },
         y: {
