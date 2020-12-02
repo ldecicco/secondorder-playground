@@ -1,0 +1,125 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Load c3.css -->
+    <link href="/css/c3.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/secord.css" rel="stylesheet">
+
+    <!-- Load d3.js and c3.js -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/d3.min.js" charset="utf-8"></script>
+    <script src="/js/c3.min.js"></script>
+    <script>
+var set_params = function() {
+       var k, d, wn, u;
+       var out;
+       d = parseFloat($('#damping').val());
+       k = parseFloat($('#staticGain').val());
+       wn = parseFloat($('#naturalFrequency').val());
+       u = parseFloat($('#stepAmplitude').val());
+       console.log(d,k,wn,u);
+       //window.update_chart(d, k, wn, u);
+       out = window.update_chart(k, d, wn, u);
+       console.log(out);
+       $('#finalValue').text(out.final_value.toFixed(2));
+       $('#maxOvershoot').text((out.max_overshoot*100).toFixed(2) + '%');
+       $('#settlingTime').text(out.settling_time.toFixed(2));
+       $('#peakTime').text(out.peak_time.toFixed(2));
+
+
+};
+</script>
+<title>Second order systems</title>
+</head>
+
+<body>
+<main role="main" class="container-fluid">
+<div class="starter-template">
+<h1>Second order systems</h1>
+<p class="lead">Second order system playground. Use the controls at the right to change system parameters.</p>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+    <div class="col-8">
+    <svg id="chart" class="chart"></svg>
+    </div>        
+<div id="info" class="col-4">
+    <div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Final value</th>
+                <th scope="col">Max. Overshoot</th>
+                <th scope="col">Settling time [s]</th>
+                <th scope="col">Peak time [s]</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="finalValue">-</td>
+                <td id="maxOvershoot">-</td>
+                <td id="settlingTime">-</td>
+                <td id="peakTime">-</td>
+            </tr>
+
+        </tbody>
+    </table>
+    </div>
+    <div class="container">
+        <form class="needs-validation">
+            <div class="form-group row">
+                <label for="staticGain" class="col-4 col-form-label">Static Gain K</label>
+                <div class="col-5">
+                    <input type="text" class="form-control" id="staticGain" placeholder="" value="1.0" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                
+                    <label for="lastName" class="col-4 col-form-label">Damping factor (delta)</label>
+                    <div class="col-5">
+                        <input type="text" class="form-control" id="damping" placeholder="" value="0.7" required>
+                    </div>
+                
+            </div>
+            
+            <div class="form-group row">
+                        <label for="lastName" class="col-4 col-form-label">Natural frequency (wn in rad/s)</label>
+                        <div class="col-5">
+                        <input type="text" class="form-control" id="naturalFrequency" placeholder="" value="1" required>
+                        </div>
+                        
+            </div>
+                    
+            <div class="form-group row">
+                <label for="lastName" class="col-4 col-form-label">Step amplitude</label>
+                <div class="col-5">
+                <input type="text" class="form-control" id="stepAmplitude" placeholder="" value="1" required>
+            </div>
+                  
+                    </div>
+        
+                    <button class="btn btn-primary btn-lg btn-block" type="button" onclick="set_params();">Apply</button>
+        
+                </div>
+            </div>
+        
+        </form>
+    </div>
+
+</div>
+</div>
+</div>
+
+</main>
+
+<script src="/main.js">
+   
+</script>
+
+</body>
+</html> 
