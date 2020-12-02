@@ -779,8 +779,9 @@ function update_chart(K, D, WN, U) {
     var final_value;
     var peak_time;
     var max_overshoot;
-    
-    sol = s.solve(secord(K, D, WN, U), 0, [0,0], tf, s.grid(0.01, solution(to,yo, envlow, envup, K, D, WN, U)));
+   
+    var step = tf/200;
+    sol = s.solve(secord(K, D, WN, U), 0, [0,0], tf, s.grid(step, solution(to,yo, envlow, envup, K, D, WN, U)));
     settling_time = -Math.log(SETTLING_B/100*Math.sqrt(1-D*D))/WN/D;
     final_value = U*K;
     max_overshoot = Math.exp(-Math.PI*D/Math.sqrt(1-D*D));
